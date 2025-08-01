@@ -8,14 +8,24 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DashboardComponent as AdminDashboardComponent } from './admin/dashboard/dashboard.component';
+import { DashboardComponent as Post1DashboardComponent } from './post1/dashboard/dashboard.component';
+import { DashboardComponent as Post2DashboardComponent } from './post2/dashboard/dashboard.component';
+import { DashboardComponent as Post3DashboardComponent } from './post3/dashboard/dashboard.component';
+import { DashboardComponent as Post4DashboardComponent } from './post4/dashboard/dashboard.component';
+import { DashboardComponent as Post5DashboardComponent } from './post5/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    DashboardComponent
+    AdminDashboardComponent,
+    Post1DashboardComponent,
+    Post2DashboardComponent,
+    Post3DashboardComponent,
+    Post4DashboardComponent,
+    Post5DashboardComponent
   ],
   imports: [
     BrowserModule,

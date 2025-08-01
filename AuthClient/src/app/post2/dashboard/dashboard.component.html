@@ -1,2 +1,7 @@
 <h1>Welcome, Post2!</h1>
 <p>This is the dashboard for users with the 'post2' role.</p>
+
+<div *ngIf="data$ | async as data">
+  <h2>Data from API:</h2>
+  <p>{{ data }}</p>
+</div>
