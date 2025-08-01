@@ -1,7 +1,7 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
@@ -17,6 +17,8 @@ export interface LoginResponse {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private apiUrl = environment.apiUrl + '/api/auth';
+  private isAuthenticated = new BehaviorSubject<boolean>(this.tokenService.getToken() !== null);
+  isAuthenticated$ = this.isAuthenticated.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -33,10 +35,18 @@ export class AuthService {
             username: response.username!,
             role: response.role!
           });
+          this.isAuthenticated.next(true);
           this.redirectBasedOnRole(response.role!);
         }
       })
     );
+  }
+
+  logout(): void {
+    this.tokenService.removeToken();
+    this.tokenService.removeUser();
+    this.isAuthenticated.next(false);
+    this.router.navigate(['/login']);
   }
 
   redirectBasedOnRole(role: string): void {
