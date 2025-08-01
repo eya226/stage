@@ -60,4 +60,8 @@ export class AuthService {
     };
     this.router.navigate([routes[role] || '/']);
   }
+
+  register(credentials: { username: string; password: string, role: string }): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.apiUrl + '/register', credentials);
+  }
 }
