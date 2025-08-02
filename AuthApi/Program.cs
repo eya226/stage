@@ -43,7 +43,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAngularDev", policy =>
-        policy.WithOrigins("https://localhost:4200")
+        policy.WithOrigins("https://localhost:4200", "http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
