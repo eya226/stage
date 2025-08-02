@@ -14,6 +14,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Role</mat-label>
       <mat-select formControlName="role">
+        <mat-option value="admin">Admin</mat-option>
         <mat-option value="post1">Post1</mat-option>
         <mat-option value="post2">Post2</mat-option>
         <mat-option value="post3">Post3</mat-option>
@@ -28,4 +29,7 @@
       {{ errorMessage }}
     </div>
   </form>
+  <p>
+    Already have an account? <a routerLink="/login">Log in</a>
+  </p>
 </div>
